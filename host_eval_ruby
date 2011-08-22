@@ -1,0 +1,12 @@
+#! /usr/bin/env ruby
+
+# EXAMPLE USAGE:
+# ==> host_eval_ruby ubuntu <<-'END_CODE'
+# "Here I am: #{`uname -a`}"
+# END_CODE
+
+require "remote_object_manager"
+hostname = ARGV[0]
+RemoteObjectManager::host_eval(hostname, $stdin).tap do |result|
+  puts result.inspect if result
+end

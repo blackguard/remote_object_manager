@@ -1,0 +1,10 @@
+#! /usr/bin/env ruby
+require "remote_object_manager"
+
+hostname = ARGV[0]
+result = RemoteObjectManager::host_eval hostname, <<-'--'
+  `uname -a`
+--
+puts ">>> #{result.inspect}"
+
+exit
